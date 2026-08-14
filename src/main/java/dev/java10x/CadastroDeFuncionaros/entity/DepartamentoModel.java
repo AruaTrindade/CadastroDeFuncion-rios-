@@ -16,7 +16,10 @@ public class DepartamentoModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
+
+    @Column(name = "nome", unique = true)
     private String nomeDoDepartamento;
 
 
