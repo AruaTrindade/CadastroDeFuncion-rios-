@@ -37,7 +37,13 @@ public class FuncionarioService {
     }
 
     // alterar funcionario
-
+    public FuncionarioModel atualiarFuncionario(Long id, FuncionarioModel funcionarioAtualizado){
+        if(funcionarioRepository.existsById(id)){
+            funcionarioAtualizado.setId(id);
+            funcionarioRepository.save(funcionarioAtualizado);
+        }
+        return null;
+    }
 
 
 

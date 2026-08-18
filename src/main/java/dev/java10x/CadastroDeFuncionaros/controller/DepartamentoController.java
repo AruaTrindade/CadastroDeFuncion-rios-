@@ -46,9 +46,9 @@ public class DepartamentoController {
 
 
     // Alterar dados dos Departamentos - UPDATE
-    @PutMapping("/alterarID")
-    public String alterarDepartamentoPorId(){
-        return "Departamento alterado";
+    @PutMapping("/alterar/{id}")
+    public DepartamentoModel alterarDepartamentoPorId(@PathVariable Long id, @RequestBody DepartamentoModel departamentoModel){
+        return departamentoService.atualiarDepartamento(id, departamentoModel);
     }
 
     // Deletar Departamento - DELETE

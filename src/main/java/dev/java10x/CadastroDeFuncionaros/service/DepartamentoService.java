@@ -38,8 +38,14 @@ public class DepartamentoService {
         departamentoRepositry.deleteById(id);
     }
 
-    // Alterar departamento
-
+    // alterar funcionario
+    public DepartamentoModel atualiarDepartamento(Long id, DepartamentoModel departamentoAtualizado){
+        if(departamentoRepositry.existsById(id)){
+            departamentoAtualizado.setId(id);
+            departamentoRepositry.save(departamentoAtualizado);
+        }
+        return null;
+    }
 
 
 }

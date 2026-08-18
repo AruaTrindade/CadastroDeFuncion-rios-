@@ -43,9 +43,9 @@ public class FuncionarioController {
 
 
     // Alterar dados dos funcionarios - UPDATE
-    @PutMapping("/alterarID")
-    public String alterarFuncionarioPorId(){
-        return "Funcionario alterado";
+    @PutMapping("/alterar/{id}")
+    public FuncionarioModel alterarFuncionarioPorId(@PathVariable Long id, @RequestBody FuncionarioModel funcionarioModel){
+        return funcionarioService.atualiarFuncionario(id, funcionarioModel);
     }
 
     // Deletar ninja - DELETE
