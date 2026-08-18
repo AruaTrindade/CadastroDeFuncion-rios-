@@ -31,6 +31,14 @@ public class FuncionarioService {
         return funcionarioRepository.save(funcionario);
     }
 
+    //Deletar funcionario - TEM QUE SER VOID
+    public void deletarFuncionarioPorId(Long id){
+        funcionarioRepository.deleteById(id);
+    }
+
+    // alterar funcionario
+
+
 
 
 }

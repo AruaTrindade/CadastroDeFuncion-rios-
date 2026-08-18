@@ -52,8 +52,9 @@ public class DepartamentoController {
     }
 
     // Deletar Departamento - DELETE
-    @DeleteMapping("/deletarID")
-    public String deletarDepartamentoPorId(){
-        return "Departamento deletado por id";
+    @DeleteMapping("/deletar/{id}")
+    public void deletarDepartamentoPorId(@PathVariable Long id){
+        departamentoService.deletarDepartamentoPorId(id);
     }
+
 }

@@ -33,4 +33,13 @@ public class DepartamentoService {
         return departamentoRepositry.save(departamento);
     }
 
+    //deletar departamento - TEM QUE SER VOID
+    public void deletarDepartamentoPorId(Long id){
+        departamentoRepositry.deleteById(id);
+    }
+
+    // Alterar departamento
+
+
+
 }
