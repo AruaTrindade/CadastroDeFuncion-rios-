@@ -28,4 +28,9 @@ public class DepartamentoService {
         return departamentoModel.orElse(null);
     }
 
+    //Criar Departamento
+    public DepartamentoModel criarDepartamento(DepartamentoModel departamento){
+        return departamentoRepositry.save(departamento);
+    }
+
 }

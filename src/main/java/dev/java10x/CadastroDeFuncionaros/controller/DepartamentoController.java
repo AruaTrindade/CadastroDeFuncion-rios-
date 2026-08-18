@@ -28,8 +28,8 @@ public class DepartamentoController {
 
     // Adcionar Departamento - CREATE
     @PostMapping("/criar")
-    public String criarDepartamento(){
-        return "Departamento criado";
+    public DepartamentoModel criarDepartamento(@RequestBody DepartamentoModel departamentoModel){
+        return departamentoService.criarDepartamento(departamentoModel);
     }
 
     // Procurar todos Departamentos - READ

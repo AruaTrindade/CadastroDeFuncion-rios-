@@ -26,6 +26,11 @@ public class FuncionarioService {
         return funcionarioModel.orElse(null);
     }
 
+    //Criar um novo Funcionario
+    public FuncionarioModel criarFuncionario(FuncionarioModel funcionario){
+        return funcionarioRepository.save(funcionario);
+    }
+
 
 
 }
