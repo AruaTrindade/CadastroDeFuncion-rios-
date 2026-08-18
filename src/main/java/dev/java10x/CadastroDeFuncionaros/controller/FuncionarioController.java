@@ -1,10 +1,20 @@
 package dev.java10x.CadastroDeFuncionaros.controller;
 
+import dev.java10x.CadastroDeFuncionaros.entity.FuncionarioModel;
+import dev.java10x.CadastroDeFuncionaros.service.FuncionarioService;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/funcionario")
 public class FuncionarioController {
+
+    private FuncionarioService funcionarioService;
+
+    public FuncionarioController(FuncionarioService funcionarioService) {
+        this.funcionarioService = funcionarioService;
+    }
 
     @GetMapping("/boasvindas")
     public String boasVindas() {
@@ -20,13 +30,13 @@ public class FuncionarioController {
     }
 
     // Procurar todos funcionarios - READ
-    @GetMapping("/todos")
-    public String mostrarTodosOsFuncionarios(){
-        return "Mostrar todos os funcionarios";
+    @GetMapping("/listar")
+    public List<FuncionarioModel> listarFuncionarios(){
+        return funcionarioService.listarFuncionarios();
     }
 
     // Procurar por id - READ
-    @GetMapping("/todosID")
+    @GetMapping("/listarID")
     public String mostrarTodosOsFuncionariosPorId(){
         return "Mostrar funcionario por id";
     }

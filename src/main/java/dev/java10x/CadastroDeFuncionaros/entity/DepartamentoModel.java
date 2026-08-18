@@ -1,5 +1,6 @@
 package dev.java10x.CadastroDeFuncionaros.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,6 +26,7 @@ public class DepartamentoModel {
 
     //Um departamento pode ter muitos funcionarios
     @OneToMany(mappedBy = "departamentos")
+    @JsonIgnore
     private List<FuncionarioModel> funcionarios;
 
 }

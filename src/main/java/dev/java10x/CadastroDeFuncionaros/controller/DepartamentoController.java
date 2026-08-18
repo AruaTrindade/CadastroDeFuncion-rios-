@@ -1,11 +1,23 @@
 package dev.java10x.CadastroDeFuncionaros.controller;
 
 
+import dev.java10x.CadastroDeFuncionaros.entity.DepartamentoModel;
+import dev.java10x.CadastroDeFuncionaros.entity.FuncionarioModel;
+import dev.java10x.CadastroDeFuncionaros.service.DepartamentoService;
 import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping("/departamento")
 public class DepartamentoController {
+
+    private DepartamentoService departamentoService;
+
+    public DepartamentoController(DepartamentoService departamentoService) {
+        this.departamentoService = departamentoService;
+    }
+
 
     @GetMapping("/boasvindas")
     public String boasVindas(){
@@ -21,13 +33,13 @@ public class DepartamentoController {
     }
 
     // Procurar todos Departamentos - READ
-    @GetMapping("/todos")
-    public String mostrarTodosOsDepartamentos(){
-        return "Mostrar todos os departamentos";
+    @GetMapping("/listar")
+    public List<DepartamentoModel> listarDepartamentos(){
+        return departamentoService.listarDepartamentos();
     }
 
     // Procurar por id - READ
-    @GetMapping("/todosID")
+    @GetMapping("/listarID")
     public String mostrarTodosOsDepartamentosPorId(){
         return "Mostrar Departamentos por id";
     }
