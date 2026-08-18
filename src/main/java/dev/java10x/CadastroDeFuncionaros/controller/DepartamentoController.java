@@ -39,9 +39,9 @@ public class DepartamentoController {
     }
 
     // Procurar por id - READ
-    @GetMapping("/listarID")
-    public String mostrarTodosOsDepartamentosPorId(){
-        return "Mostrar Departamentos por id";
+    @GetMapping("/listar/{id}")
+    public DepartamentoModel listarDepartamentosPorId(@PathVariable Long id){
+        return departamentoService.listarDepartamentosPorId(id);
     }
 
 

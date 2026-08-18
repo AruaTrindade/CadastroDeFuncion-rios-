@@ -36,9 +36,9 @@ public class FuncionarioController {
     }
 
     // Procurar por id - READ
-    @GetMapping("/listarID")
-    public String mostrarTodosOsFuncionariosPorId(){
-        return "Mostrar funcionario por id";
+    @GetMapping("/listar/{id}")
+    public FuncionarioModel listarFuncionariosPorId(@PathVariable Long id){
+        return funcionarioService.listarFuncionariosPorId(id);
     }
 
 

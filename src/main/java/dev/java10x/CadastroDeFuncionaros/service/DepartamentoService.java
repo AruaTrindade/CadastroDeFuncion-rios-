@@ -6,6 +6,7 @@ import dev.java10x.CadastroDeFuncionaros.repository.DepartamentoRepositry;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class DepartamentoService {
@@ -22,4 +23,9 @@ public class DepartamentoService {
     }
 
     //Listar por ID
+    public DepartamentoModel listarDepartamentosPorId(Long id){
+        Optional<DepartamentoModel> departamentoModel = departamentoRepositry.findById(id);
+        return departamentoModel.orElse(null);
+    }
+
 }
