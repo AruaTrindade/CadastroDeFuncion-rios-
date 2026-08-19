@@ -16,7 +16,7 @@ import java.util.List;
 @RequestMapping("/departamento")
 public class DepartamentoController {
 
-    private DepartamentoService departamentoService;
+    private final DepartamentoService departamentoService;
 
     public DepartamentoController(DepartamentoService departamentoService) {
         this.departamentoService = departamentoService;

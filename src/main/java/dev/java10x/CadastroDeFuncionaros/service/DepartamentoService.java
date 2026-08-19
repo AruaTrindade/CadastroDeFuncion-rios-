@@ -15,8 +15,8 @@ import java.util.stream.Collectors;
 
 @Service
 public class DepartamentoService {
-    private DepartamentoRepositry departamentoRepositry;
-    private DepartamentoMapper departamentoMapper;
+    private final DepartamentoRepositry departamentoRepositry;
+    private final DepartamentoMapper departamentoMapper;
 
     public DepartamentoService(DepartamentoRepositry departamentoRepositry, DepartamentoMapper departamentoMapper) {
         this.departamentoRepositry = departamentoRepositry;
