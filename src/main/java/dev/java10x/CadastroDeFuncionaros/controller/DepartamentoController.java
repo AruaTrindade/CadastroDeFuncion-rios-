@@ -1,6 +1,7 @@
 package dev.java10x.CadastroDeFuncionaros.controller;
 
 
+import dev.java10x.CadastroDeFuncionaros.dto.DepartamentoDTO;
 import dev.java10x.CadastroDeFuncionaros.entity.DepartamentoModel;
 import dev.java10x.CadastroDeFuncionaros.entity.FuncionarioModel;
 import dev.java10x.CadastroDeFuncionaros.service.DepartamentoService;
@@ -28,8 +29,8 @@ public class DepartamentoController {
 
     // Adcionar Departamento - CREATE
     @PostMapping("/criar")
-    public DepartamentoModel criarDepartamento(@RequestBody DepartamentoModel departamentoModel){
-        return departamentoService.criarDepartamento(departamentoModel);
+    public DepartamentoDTO criarDepartamento(@RequestBody DepartamentoDTO departamentoDTO){
+        return departamentoService.criarDepartamento(departamentoDTO);
     }
 
     // Procurar todos Departamentos - READ

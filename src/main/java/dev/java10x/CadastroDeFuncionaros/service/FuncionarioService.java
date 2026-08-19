@@ -1,6 +1,8 @@
 package dev.java10x.CadastroDeFuncionaros.service;
 
+import dev.java10x.CadastroDeFuncionaros.dto.FuncionarioDTO;
 import dev.java10x.CadastroDeFuncionaros.entity.FuncionarioModel;
+import dev.java10x.CadastroDeFuncionaros.mapper.FuncionarioMapper;
 import dev.java10x.CadastroDeFuncionaros.repository.FuncionarioRepository;
 import org.springframework.stereotype.Service;
 
@@ -10,9 +12,11 @@ import java.util.Optional;
 @Service
 public class FuncionarioService {
     private FuncionarioRepository funcionarioRepository;
+    private FuncionarioMapper funcionarioMapper;
 
-    public FuncionarioService(FuncionarioRepository funcionarioRepository) {
+    public FuncionarioService(FuncionarioRepository funcionarioRepository, FuncionarioMapper funcionarioMapper) {
         this.funcionarioRepository = funcionarioRepository;
+        this.funcionarioMapper = funcionarioMapper;
     }
 
     // Listar todos os meus ninjas
@@ -27,8 +31,10 @@ public class FuncionarioService {
     }
 
     //Criar um novo Funcionario
-    public FuncionarioModel criarFuncionario(FuncionarioModel funcionario){
-        return funcionarioRepository.save(funcionario);
+    public FuncionarioDTO criarFuncionario(FuncionarioDTO funcionarioDTO){
+        FuncionarioModel funcionario = funcionarioMapper.map(funcionarioDTO);
+        funcionarioRepository.save(funcionario);
+        return funcionarioMapper.map(funcionario);
     }
 
     //Deletar funcionario - TEM QUE SER VOID

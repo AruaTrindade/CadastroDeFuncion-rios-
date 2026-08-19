@@ -1,5 +1,6 @@
 package dev.java10x.CadastroDeFuncionaros.controller;
 
+import dev.java10x.CadastroDeFuncionaros.dto.FuncionarioDTO;
 import dev.java10x.CadastroDeFuncionaros.entity.FuncionarioModel;
 import dev.java10x.CadastroDeFuncionaros.service.FuncionarioService;
 import org.springframework.web.bind.annotation.*;
@@ -25,8 +26,8 @@ public class FuncionarioController {
 
     // Adcionar funcionario - CREATE
     @PostMapping("/criar")
-    public FuncionarioModel criarFuncionario(@RequestBody FuncionarioModel funcionarioModel){
-        return funcionarioService.criarFuncionario(funcionarioModel);
+    public FuncionarioDTO criarFuncionario(@RequestBody FuncionarioDTO funcionarioDTO){
+        return funcionarioService.criarFuncionario(funcionarioDTO);
     }
 
     // Procurar todos funcionarios - READ
