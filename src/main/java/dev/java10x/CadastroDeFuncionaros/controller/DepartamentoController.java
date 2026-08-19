@@ -1,6 +1,7 @@
 package dev.java10x.CadastroDeFuncionaros.controller;
 
 
+import dev.java10x.CadastroDeFuncionaros.dto.DepartamentoDTO;
 import dev.java10x.CadastroDeFuncionaros.entity.DepartamentoModel;
 import dev.java10x.CadastroDeFuncionaros.entity.FuncionarioModel;
 import dev.java10x.CadastroDeFuncionaros.service.DepartamentoService;
@@ -28,27 +29,27 @@ public class DepartamentoController {
 
     // Adcionar Departamento - CREATE
     @PostMapping("/criar")
-    public DepartamentoModel criarDepartamento(@RequestBody DepartamentoModel departamentoModel){
-        return departamentoService.criarDepartamento(departamentoModel);
+    public DepartamentoDTO criarDepartamento(@RequestBody DepartamentoDTO departamentoDTO){
+        return departamentoService.criarDepartamento(departamentoDTO);
     }
 
     // Procurar todos Departamentos - READ
     @GetMapping("/listar")
-    public List<DepartamentoModel> listarDepartamentos(){
+    public List<DepartamentoDTO> listarDepartamentos(){
         return departamentoService.listarDepartamentos();
     }
 
     // Procurar por id - READ
     @GetMapping("/listar/{id}")
-    public DepartamentoModel listarDepartamentosPorId(@PathVariable Long id){
+    public DepartamentoDTO listarDepartamentosPorId(@PathVariable Long id){
         return departamentoService.listarDepartamentosPorId(id);
     }
 
 
     // Alterar dados dos Departamentos - UPDATE
     @PutMapping("/alterar/{id}")
-    public DepartamentoModel alterarDepartamentoPorId(@PathVariable Long id, @RequestBody DepartamentoModel departamentoModel){
-        return departamentoService.atualiarDepartamento(id, departamentoModel);
+    public DepartamentoDTO alterarDepartamentoPorId(@PathVariable Long id, @RequestBody DepartamentoDTO departamentoDTO){
+        return departamentoService.atualizarDepartamento(id, departamentoDTO);
     }
 
     // Deletar Departamento - DELETE

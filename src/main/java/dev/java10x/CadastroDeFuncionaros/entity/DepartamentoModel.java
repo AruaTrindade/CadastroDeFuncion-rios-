@@ -23,6 +23,9 @@ public class DepartamentoModel {
     @Column(name = "nome", unique = true)
     private String nomeDoDepartamento;
 
+    @Column(name = "responsavel", unique = true)
+    private String responsavel;
+
 
     //Um departamento pode ter muitos funcionarios
     @OneToMany(mappedBy = "departamentos")

@@ -1,36 +1,47 @@
 package dev.java10x.CadastroDeFuncionaros.service;
 
+import dev.java10x.CadastroDeFuncionaros.dto.DepartamentoDTO;
+import dev.java10x.CadastroDeFuncionaros.dto.FuncionarioDTO;
 import dev.java10x.CadastroDeFuncionaros.entity.DepartamentoModel;
 import dev.java10x.CadastroDeFuncionaros.entity.FuncionarioModel;
+import dev.java10x.CadastroDeFuncionaros.mapper.DepartamentoMapper;
 import dev.java10x.CadastroDeFuncionaros.repository.DepartamentoRepositry;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collector;
+import java.util.stream.Collectors;
 
 @Service
 public class DepartamentoService {
     private DepartamentoRepositry departamentoRepositry;
+    private DepartamentoMapper departamentoMapper;
 
-
-    public DepartamentoService(DepartamentoRepositry departamentoRepositry) {
+    public DepartamentoService(DepartamentoRepositry departamentoRepositry, DepartamentoMapper departamentoMapper) {
         this.departamentoRepositry = departamentoRepositry;
+        this.departamentoMapper = departamentoMapper;
     }
 
     // Listar todos os meus departamentos
-    public List<DepartamentoModel> listarDepartamentos(){
-        return departamentoRepositry.findAll();
+    public List<DepartamentoDTO> listarDepartamentos(){
+        List<DepartamentoModel> departamento = departamentoRepositry.findAll();
+        return departamento.stream()
+                .map(departamentoMapper::map)
+                .collect(Collectors.toList());
     }
 
     //Listar por ID
-    public DepartamentoModel listarDepartamentosPorId(Long id){
-        Optional<DepartamentoModel> departamentoModel = departamentoRepositry.findById(id);
-        return departamentoModel.orElse(null);
+    public DepartamentoDTO listarDepartamentosPorId(Long id){
+        Optional<DepartamentoModel> departamentoPorId = departamentoRepositry.findById(id);
+        return departamentoPorId.map(departamentoMapper::map).orElse(null);
     }
 
     //Criar Departamento
-    public DepartamentoModel criarDepartamento(DepartamentoModel departamento){
-        return departamentoRepositry.save(departamento);
+    public DepartamentoDTO criarDepartamento(DepartamentoDTO departamentoDTO){
+        DepartamentoModel departamento = departamentoMapper.map(departamentoDTO);
+        departamentoRepositry.save(departamento);
+        return departamentoMapper.map(departamento);
     }
 
     //deletar departamento - TEM QUE SER VOID
@@ -39,10 +50,13 @@ public class DepartamentoService {
     }
 
     // alterar funcionario
-    public DepartamentoModel atualiarDepartamento(Long id, DepartamentoModel departamentoAtualizado){
-        if(departamentoRepositry.existsById(id)){
+    public DepartamentoDTO atualizarDepartamento(Long id, DepartamentoDTO departamentoDTO){
+        Optional<DepartamentoModel> departamentoExistente = departamentoRepositry.findById(id);
+        if (departamentoExistente.isPresent()){
+            DepartamentoModel departamentoAtualizado = departamentoMapper.map(departamentoDTO);
             departamentoAtualizado.setId(id);
-            departamentoRepositry.save(departamentoAtualizado);
+            DepartamentoModel departamentoSalvo = departamentoRepositry.save(departamentoAtualizado);
+            return departamentoMapper.map(departamentoSalvo);
         }
         return null;
     }
