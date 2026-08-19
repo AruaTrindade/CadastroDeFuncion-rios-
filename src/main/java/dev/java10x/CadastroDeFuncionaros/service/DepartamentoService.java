@@ -1,7 +1,9 @@
 package dev.java10x.CadastroDeFuncionaros.service;
 
+import dev.java10x.CadastroDeFuncionaros.dto.DepartamentoDTO;
 import dev.java10x.CadastroDeFuncionaros.entity.DepartamentoModel;
 import dev.java10x.CadastroDeFuncionaros.entity.FuncionarioModel;
+import dev.java10x.CadastroDeFuncionaros.mapper.DepartamentoMapper;
 import dev.java10x.CadastroDeFuncionaros.repository.DepartamentoRepositry;
 import org.springframework.stereotype.Service;
 
@@ -11,10 +13,11 @@ import java.util.Optional;
 @Service
 public class DepartamentoService {
     private DepartamentoRepositry departamentoRepositry;
+    private DepartamentoMapper departamentoMapper;
 
-
-    public DepartamentoService(DepartamentoRepositry departamentoRepositry) {
+    public DepartamentoService(DepartamentoRepositry departamentoRepositry, DepartamentoMapper departamentoMapper) {
         this.departamentoRepositry = departamentoRepositry;
+        this.departamentoMapper = departamentoMapper;
     }
 
     // Listar todos os meus departamentos
@@ -29,8 +32,10 @@ public class DepartamentoService {
     }
 
     //Criar Departamento
-    public DepartamentoModel criarDepartamento(DepartamentoModel departamento){
-        return departamentoRepositry.save(departamento);
+    public DepartamentoDTO criarDepartamento(DepartamentoDTO departamentoDTO){
+        DepartamentoModel departamento = departamentoMapper.map(departamentoDTO);
+        departamentoRepositry.save(departamento);
+        return departamentoMapper.map(departamento);
     }
 
     //deletar departamento - TEM QUE SER VOID
