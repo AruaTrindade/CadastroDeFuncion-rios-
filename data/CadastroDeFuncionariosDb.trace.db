@@ -80,3 +80,15 @@ Caused by: org.h2.jdbc.JdbcSQLNonTransientConnectionException: The connection wa
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:690)
 	at org.h2.message.DbException.getJdbcSQLException(DbException.java:489)
 	... 16 more
+2026-08-19 12:25:53.048271-03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "'Tecnologia' (TB_CADASTRO: ""DEPARTAMENTOS_ID"" BIGINT)"; SQL statement:
+UPDATE "PUBLIC"."TB_CADASTRO" SET "ID"=? ,"EMAIL"=? ,"IDADE"=? ,"IMG_URL"=? ,"NOME"=? ,"DEPARTAMENTOS_ID"=?  WHERE "ID"=? [22018-240]
+2026-08-19 12:25:53.051804-03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "'Tecnologia' (TB_CADASTRO: ""DEPARTAMENTOS_ID"" BIGINT)"; SQL statement:
+UPDATE "PUBLIC"."TB_CADASTRO" SET "ID"=? ,"EMAIL"=? ,"IDADE"=? ,"IMG_URL"=? ,"NOME"=? ,"DEPARTAMENTOS_ID"=?  WHERE "ID"=? [22018-240]
+2026-08-19 12:26:39.545051-03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "'ti' (TB_CADASTRO: ""DEPARTAMENTOS_ID"" BIGINT)"; SQL statement:
+UPDATE "PUBLIC"."TB_CADASTRO" SET "ID"=? ,"EMAIL"=? ,"IDADE"=? ,"IMG_URL"=? ,"NOME"=? ,"DEPARTAMENTOS_ID"=?  WHERE "ID"=? [22018-240]
+2026-08-19 12:26:39.546076-03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLDataException: Data conversion error converting "'ti' (TB_CADASTRO: ""DEPARTAMENTOS_ID"" BIGINT)"; SQL statement:
+UPDATE "PUBLIC"."TB_CADASTRO" SET "ID"=? ,"EMAIL"=? ,"IDADE"=? ,"IMG_URL"=? ,"NOME"=? ,"DEPARTAMENTOS_ID"=?  WHERE "ID"=? [22018-240]
