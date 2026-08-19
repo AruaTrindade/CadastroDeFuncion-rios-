@@ -35,21 +35,21 @@ public class DepartamentoController {
 
     // Procurar todos Departamentos - READ
     @GetMapping("/listar")
-    public List<DepartamentoModel> listarDepartamentos(){
+    public List<DepartamentoDTO> listarDepartamentos(){
         return departamentoService.listarDepartamentos();
     }
 
     // Procurar por id - READ
     @GetMapping("/listar/{id}")
-    public DepartamentoModel listarDepartamentosPorId(@PathVariable Long id){
+    public DepartamentoDTO listarDepartamentosPorId(@PathVariable Long id){
         return departamentoService.listarDepartamentosPorId(id);
     }
 
 
     // Alterar dados dos Departamentos - UPDATE
     @PutMapping("/alterar/{id}")
-    public DepartamentoModel alterarDepartamentoPorId(@PathVariable Long id, @RequestBody DepartamentoModel departamentoModel){
-        return departamentoService.atualiarDepartamento(id, departamentoModel);
+    public DepartamentoDTO alterarDepartamentoPorId(@PathVariable Long id, @RequestBody DepartamentoDTO departamentoDTO){
+        return departamentoService.atualizarDepartamento(id, departamentoDTO);
     }
 
     // Deletar Departamento - DELETE

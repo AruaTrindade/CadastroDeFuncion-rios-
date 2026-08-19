@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class FuncionarioService {
@@ -20,14 +21,17 @@ public class FuncionarioService {
     }
 
     // Listar todos os meus ninjas
-    public List<FuncionarioModel> listarFuncionarios(){
-        return funcionarioRepository.findAll();
+    public List<FuncionarioDTO> listarFuncionarios(){
+        List<FuncionarioModel> funcionarios = funcionarioRepository.findAll();
+        return funcionarios.stream()
+                .map(funcionarioMapper::map)
+                .collect(Collectors.toList());
     }
 
     //Listar por ID
-    public FuncionarioModel listarFuncionariosPorId(Long id){
-        Optional<FuncionarioModel> funcionarioModel = funcionarioRepository.findById(id);
-        return funcionarioModel.orElse(null);
+    public FuncionarioDTO listarFuncionariosPorId(Long id){
+        Optional<FuncionarioModel> funcionarioPorId = funcionarioRepository.findById(id);
+        return funcionarioPorId.map(funcionarioMapper::map).orElse(null);
     }
 
     //Criar um novo Funcionario
@@ -43,10 +47,13 @@ public class FuncionarioService {
     }
 
     // alterar funcionario
-    public FuncionarioModel atualiarFuncionario(Long id, FuncionarioModel funcionarioAtualizado){
-        if(funcionarioRepository.existsById(id)){
-            funcionarioAtualizado.setId(id);
-            funcionarioRepository.save(funcionarioAtualizado);
+    public FuncionarioDTO atualiarFuncionario(Long id, FuncionarioDTO funcionarioDTO){
+        Optional<FuncionarioModel> funcionarioExistente = funcionarioRepository.findById(id);
+        if (funcionarioExistente.isPresent()){
+            FuncionarioModel funcionarioAtualzado = funcionarioMapper.map(funcionarioDTO);
+            funcionarioAtualzado.setId(id);
+            FuncionarioModel funcionarioSalvo = funcionarioRepository.save(funcionarioAtualzado);
+            return funcionarioMapper.map(funcionarioSalvo);
         }
         return null;
     }

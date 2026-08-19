@@ -32,21 +32,21 @@ public class FuncionarioController {
 
     // Procurar todos funcionarios - READ
     @GetMapping("/listar")
-    public List<FuncionarioModel> listarFuncionarios(){
+    public List<FuncionarioDTO> listarFuncionarios(){
         return funcionarioService.listarFuncionarios();
     }
 
     // Procurar por id - READ
     @GetMapping("/listar/{id}")
-    public FuncionarioModel listarFuncionariosPorId(@PathVariable Long id){
+    public FuncionarioDTO listarFuncionariosPorId(@PathVariable Long id){
         return funcionarioService.listarFuncionariosPorId(id);
     }
 
 
     // Alterar dados dos funcionarios - UPDATE
     @PutMapping("/alterar/{id}")
-    public FuncionarioModel alterarFuncionarioPorId(@PathVariable Long id, @RequestBody FuncionarioModel funcionarioModel){
-        return funcionarioService.atualiarFuncionario(id, funcionarioModel);
+    public FuncionarioDTO alterarFuncionarioPorId(@PathVariable Long id, @RequestBody FuncionarioDTO funcionarioDTO){
+        return funcionarioService.atualiarFuncionario(id, funcionarioDTO);
     }
 
     // Deletar ninja - DELETE
